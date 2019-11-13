@@ -22,10 +22,10 @@ void traverseInOrder() override {
 
 Also please add unit tests in BinaryTreeTest.cpp.
 
-### 3. (20pt) Implemenet the post-order traverse recursively. The following is given in BinaryTree.h:
+### 3. (20pt) Implemenet the post-order traverse iteratively. The following is given in BinaryTree.h:
 ```c++
 void traversePostOrder() override {
-    // homework, to be done recursively
+    // homework, to be done iteratively
 }
 ```
 
@@ -49,9 +49,11 @@ For example, with the following tree
 - LCA(7, 8) = 8
 - LCA(8, 6) = 4
 - LCA(3, 2) = 4
-- LCA(8, 10) = -1
 
-You can assume the tree only contain positive integers, and there are no duplicated numbers in the tree. The function will return -1 when LCA of the two nodes does not exist. The following is given in BinaryTree.h
+You can assume the following
+* tree only contain positive integers, and 
+* tree will contain both nodes
+* there are no duplicated numbers in the tree. The following is given in BinaryTree.h
 
 ```c++
 T LCA(T node1, T node2) {

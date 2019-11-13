@@ -6,6 +6,8 @@ In the class we have discussed the problem of outputing all valid parentheses of
 
 You could choose to follow the in-class demo code, or use your own implementation. **The only requirement is to use backtracking.**
 
+As an extension info, this parentheses problem belongs to a category of math problem call [Catalan Number](https://en.wikipedia.org/wiki/Catalan_number)
+
 
 ### 1. (10pt) Rewrite the possibleParenthesis function with the following signature:
 

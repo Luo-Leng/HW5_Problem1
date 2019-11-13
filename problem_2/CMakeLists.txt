@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(binary_tree)
+project(binary_tree_homdework)
 
 set(CMAKE_CXX_STANDARD 17)
 

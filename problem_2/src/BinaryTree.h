@@ -32,14 +32,15 @@ public:
         return false;
     }
 
-    void traverseInOrder() override {
+    std::vector<T> traverseInOrder() override {
         // homework, to be done iteratively
     }
 
-    void traversePreOrder() override {
+    std::vector<T> traversePreOrder() override {
         // don't bother
     }
-    void traversePostOrder() override {
+
+    std::vector<T> traversePostOrder() override {
         // homework, to be done iteratively
     }
 
