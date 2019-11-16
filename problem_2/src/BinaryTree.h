@@ -48,8 +48,33 @@ public:
         // homework
     }
 
+    TreeNode<T>* _LCA(TreeNode<T>* node, T value1, T value2) {
+        if (node== nullptr) {
+            return nullptr;
+        }
+
+        // check root
+        if (node->val == value1 || node->val == value2) {
+            return node;
+        }
+
+        // check both childrens
+        TreeNode<T>* left = _LCA(node->left, value1, value2);
+        TreeNode<T>* right = _LCA(node->right, value1, value2);
+
+        if (left!= nullptr && right!= nullptr) {
+            return node;
+        }
+
+        if (left == nullptr && right == nullptr) {
+            return nullptr;
+        }
+
+        return left == nullptr ? right : left;
+    }
     T LCA(T node1, T node2) {
-        // homework
+        TreeNode<T>* node = _LCA(root, node1, node2);
+        return node == nullptr ? -1 : node->val;
     }
 
     bool add(const T &) override {
