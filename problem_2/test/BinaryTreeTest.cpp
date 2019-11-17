@@ -1,6 +1,9 @@
 #include "BinaryTree.h"
 #include "gtest/gtest.h"
 
+#include <iostream>
+using namespace std;
+
 
 
 BinaryTree<int>* generateTree() {
@@ -14,9 +17,17 @@ BinaryTree<int>* generateTree() {
     root->getRight()->setLeft(new TreeNode<int>(2));
     root->getRight()->setRight(new TreeNode<int>(9));
     BinaryTree<int> *tree = new BinaryTree<int>(root);
-
     return tree;
 }
+
+
+TEST(tree,destructor){
+    BinaryTree<int>* tree = generateTree();
+    delete tree;
+    ASSERT_EQ(TreeNode<int>::getCount(),7);
+}
+
+
 
 TEST(tree, demo) {
     TreeNode<int>* root = new TreeNode<int>(3);
@@ -33,6 +44,8 @@ TEST(tree, demo) {
     ASSERT_EQ(tree.height(),3);
 }
 
+
+
 TEST(tree,inorder_iterative){
     BinaryTree<int>* tree = generateTree();
     std::vector<int> answer{7,8,3,4,2,6,9};
@@ -40,6 +53,17 @@ TEST(tree,inorder_iterative){
     ASSERT_EQ(answer,tree->traverseInOrder());
 
 }
+
+
+
+TEST(tree,postorder_iterative){
+    BinaryTree<int>* tree = generateTree();
+    std::vector<int> answer{7,3,8,2,9,6,4};
+
+    ASSERT_EQ(answer,tree->traversePostOrder());
+
+}
+
 
 
 TEST(tree, LCA) {
