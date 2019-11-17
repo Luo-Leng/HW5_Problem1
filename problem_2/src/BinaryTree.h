@@ -1,5 +1,5 @@
 #pragma once
-
+using namespace std;
 #include "Tree.h"
 #include "TreeNode.h"
 #include <vector>
@@ -33,7 +33,20 @@ public:
     }
 
     std::vector<T> traverseInOrder() override {
-        // homework, to be done iteratively
+        std::vector<T> result;
+        LinkedStack<TreeNode<T> *> stack;
+        TreeNode<T>* cur = root;
+        while(cur != nullptr || !stack.isEmpty()) {
+            while (cur != nullptr) {
+                stack.push(cur);
+                cur = cur->left;
+            }
+            cur = stack.peek();
+            stack.pop();
+            result.push_back(cur->val);
+            cur = cur->right;
+        }
+        return result;
     }
 
     std::vector<T> traversePreOrder() override {
@@ -45,7 +58,29 @@ public:
     }
 
     virtual ~BinaryTree() {
-        // homework
+      /*  LinkedStack<TreeNode<T> *> stack;
+
+        if (root == nullptr) {
+            return;
+        }
+
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode<T> *node = stack.peek();
+            stack.pop();
+
+            if (node->right != nullptr) {
+                stack.push(node->right);
+            }
+
+            if (node->left != nullptr) {
+                stack.push(node->left);
+            }
+
+            delete node;
+        }
+    */
     }
 
     TreeNode<T>* _LCA(TreeNode<T>* node, T value1, T value2) {
