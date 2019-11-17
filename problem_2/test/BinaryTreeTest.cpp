@@ -32,6 +32,16 @@ TEST(tree, demo) {
 
     ASSERT_EQ(tree.height(),3);
 }
+
+TEST(tree,inorder_iterative){
+    BinaryTree<int>* tree = generateTree();
+    std::vector<int> answer{7,8,3,4,2,6,9};
+
+    ASSERT_EQ(answer,tree->traverseInOrder());
+
+}
+
+
 TEST(tree, LCA) {
     BinaryTree<int>* tree = generateTree();
     ASSERT_EQ(tree->LCA(4, 4), 4);
