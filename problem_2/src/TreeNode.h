@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+using namespace std;
 template <class T> class BinaryTree;
 
 template <class T>
@@ -10,12 +12,16 @@ private:
     TreeNode<T> * left;
     TreeNode<T> * right;
 
+
 public:
+   static int count;
+
     TreeNode() : left(nullptr), right(nullptr) {
     }
 
     TreeNode(T val) : TreeNode() {
         this->val = val;
+
     }
 
     void setLeft(TreeNode<T> *left) {
@@ -33,4 +39,13 @@ public:
     TreeNode *getRight() const {
         return right;
     }
+    ~TreeNode(){
+        count++;
+    }
+    static int getCount(){
+        return count;
+    }
+
 };
+template<class T>
+int TreeNode<T>::count=0;

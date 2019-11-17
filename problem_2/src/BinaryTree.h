@@ -53,47 +53,65 @@ public:
         // don't bother
     }
 
-    std::vector<T> traversePostOrder() override {
-        // homework, to be done iteratively
+    std::vector<T> traversePostOrder() override
+    {
+
+        LinkedStack<TreeNode<T> *> stk;
+        LinkedStack<TreeNode<T> *> stk1;
+        stk.push(root);
+        std::vector<T> result;
+        while (!stk.isEmpty())
+        {
+            TreeNode<T> *cur = stk.peek();
+            stk.pop();
+            stk1.push(cur);
+            if (cur->left)
+                stk.push(cur->left);
+            if (cur->right)
+                stk.push(cur->right);
+        }
+        while(!stk1.isEmpty()){
+            result.push_back(stk1.peek()->val);
+            stk1.pop();
+
+        }
+
+        return result;
     }
 
-    virtual ~BinaryTree() {
-      /*  LinkedStack<TreeNode<T> *> stack;
 
-        if (root == nullptr) {
-            return;
-        }
 
-        stack.push(root);
+        virtual ~BinaryTree() {
+            LinkedStack<TreeNode<T> *> stk;
 
-        while (!stack.isEmpty()) {
-            TreeNode<T> *node = stack.peek();
-            stack.pop();
+            stk.push(root);
 
-            if (node->right != nullptr) {
-                stack.push(node->right);
+            while (!stk.isEmpty())
+            {
+                TreeNode<T> *cur = stk.peek();
+                TreeNode<T> *left = cur->left;
+                TreeNode<T> *right = cur->right;
+                stk.pop();
+               delete cur;
+                if (left)
+                    stk.push(left);
+                if (right)
+                    stk.push(right);
             }
 
-            if (node->left != nullptr) {
-                stack.push(node->left);
-            }
 
-            delete node;
-        }
-    */
+
+
     }
 
     TreeNode<T>* _LCA(TreeNode<T>* node, T value1, T value2) {
         if (node== nullptr) {
             return nullptr;
         }
-
-        // check root
         if (node->val == value1 || node->val == value2) {
             return node;
         }
 
-        // check both childrens
         TreeNode<T>* left = _LCA(node->left, value1, value2);
         TreeNode<T>* right = _LCA(node->right, value1, value2);
 
