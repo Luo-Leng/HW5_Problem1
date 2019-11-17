@@ -6,25 +6,34 @@ void showResult(std::list<std::string> & result) {
         printf("%s\n", (*i).c_str());
     }
 };
+TEST(test_recursive, 0) {
+    std::list<std::string> result;
+    possibleParenthesis(0, result);
+    ASSERT_TRUE(result.empty());
 
+// homework: add verification
+}
 TEST(test_recursive, 1) {
     std::list<std::string> result;
     possibleParenthesis(1, result);
+    std::list<std::string> result1 {"{}"};
+    ASSERT_EQ(result,result1);
 
-    // homework: add verification
 }
 
 TEST(test_recursive, 2) {
     std::list<std::string> result;
     possibleParenthesis(2, result);
-
+    std::list<std::string> result1 {"{}{}","{{}}"};
+    ASSERT_EQ(result,result1);
     // homework: add verification
 }
 
 TEST(test_recursive, 3) {
     std::list<std::string> result;
     possibleParenthesis(3, result);
-
+    std::list<std::string> result1 {"{}{}{}","{}{{}}","{{}}{}","{{}{}}","{{{}}}"};
+    ASSERT_EQ(result,result1);
     // homework: add verification
 }
 
